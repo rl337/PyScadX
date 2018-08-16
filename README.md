@@ -1,0 +1,2 @@
+# PyScadX
+Python OpenSCAD exporter
