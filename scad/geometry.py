@@ -166,6 +166,6 @@ class Union(Form):
 
     def scad_string(self, indent=0):
         opener = self.indent("union() {", indent)
-        closer = self.indent("}", indent, indent)
+        closer = self.indent("}", indent)
         body = '\n'.join([ "%s;" % form.as_scad(indent + 1) for form in self.forms ])
         return "%s\n%s\n%s" % (opener, body, closer)
