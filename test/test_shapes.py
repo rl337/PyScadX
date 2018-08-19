@@ -25,7 +25,7 @@ def test_asserts():
         shape_class = getattr(scad.shapes, shape)
 
         shape_obj = shape_class(**shape_params)
-        actual_points = shape_obj.points
+        actual_points = [ x.point for x in shape_obj.points ]
 
         assert len(actual_points) == len(expected_points), "Got %d points, expected %d points" % (len(actual_points), len(expected_points))
 
