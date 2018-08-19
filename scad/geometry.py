@@ -54,9 +54,8 @@ class Polygon(SCADGeometry):
         self.points = [ self.assert_point2d(x) for x in points ]
 
     def as_scad(self, indent=0):
-        pointlist = ["(%f,%f)" % (p[0], p[1]) for p in self.points]
-        return indent("polygon([%s])" % ','.join(pointlist), indent)
-    
+        pointlist = ["[%g,%g]" % (p[0], p[1]) for p in self.points]
+        return self.indent("polygon([%s])" % ','.join(pointlist), indent)
 
 class LinearExtrude(SCADGeometry):
     def __init__(self, name, polygon, height, is_centered):
@@ -67,7 +66,7 @@ class LinearExtrude(SCADGeometry):
 
     def as_scad(self, indent=0):
         return "%s\n%s" % (
-            indent("linear_extrude(height=%f, center=%s)" % (self.height, ("%s" % self.is_centered).lower()), indent),
+            self.indent("linear_extrude(height=%g, center=%s)" % (self.height, ("%s" % self.is_centered).lower()), indent),
             self.polygon.as_scad(indent + 1)
         )
 
