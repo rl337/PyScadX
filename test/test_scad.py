@@ -28,6 +28,56 @@ linear_extrude(height=10, center=false)
   polygon([[-5,-5],[5,-5],[5,5],[-5,5],[-5,-5]])
 '''
     },
+    {
+        'class': 'LinearExtrude',
+        'params': {
+            'name': 'test_extrude1',
+            'polygon': scad.shapes.Square('test_extrude1.square1', 10),
+            'height': 10,
+            'is_centered': False,
+            'translation': (0, 0, 20)
+        },
+        'indents': 0,
+        'expected_string':'''
+translate([0,0,20])
+  linear_extrude(height=10, center=false)
+    polygon([[-5,-5],[5,-5],[5,5],[-5,5],[-5,-5]])
+'''
+    },
+    {
+        'class': 'LinearExtrude',
+        'params': {
+            'name': 'test_extrude1',
+            'polygon': scad.shapes.Square('test_extrude1.square1', 10),
+            'height': 10,
+            'is_centered': False,
+            'rotation': (0, 0, 20)
+        },
+        'indents': 0,
+        'expected_string':'''
+rotate([0,0,20])
+  linear_extrude(height=10, center=false)
+    polygon([[-5,-5],[5,-5],[5,5],[-5,5],[-5,-5]])
+'''
+    },
+    {
+        'class': 'LinearExtrude',
+        'params': {
+            'name': 'test_extrude1',
+            'polygon': scad.shapes.Square('test_extrude1.square1', 10),
+            'height': 10,
+            'is_centered': False,
+            'rotation': (0, 0, 20),
+            'translation': (23, 7, 13)
+        },
+        'indents': 0,
+        'expected_string':'''
+translate([23,7,13])
+  rotate([0,0,20])
+    linear_extrude(height=10, center=false)
+      polygon([[-5,-5],[5,-5],[5,5],[-5,5],[-5,-5]])
+'''
+    },
 ]
 
 def test_asserts():
